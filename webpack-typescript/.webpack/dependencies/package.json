@@ -1,0 +1,11 @@
+{
+  "name": "serverless-webpack-example",
+  "version": "1.0.0",
+  "description": "Packaged externals for serverless-webpack-example",
+  "private": true,
+  "scripts": {},
+  "dependencies": {
+    "date-fns-tz": "^1.0.10",
+    "date-fns": "^2.11.0"
+  }
+}
