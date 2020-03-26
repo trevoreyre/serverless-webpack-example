@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {},
   "dependencies": {
+    "aws-sdk": "^2.646.0",
     "date-fns-tz": "^1.0.10",
     "date-fns": "^2.11.0"
   }

@@ -1,12 +1,20 @@
 const { utcToZonedTime, format } = require('date-fns-tz')
 
-const timeZones = ({ time, timeZones }) => {
+const timeZones = ({ time, timeZones }, s3) => {
   const date = new Date(time)
+  const weatherImage = await s3.getSignedUrlPromise('getObject', {
+    Bucket: 'serverless-webpack-example',
+    Key: 'sun.png',
+  })
+
   return {
     time,
     timeZones: timeZones.reduce((timeZones, timeZone) => {
       const zonedTime = utcToZonedTime(date, timeZone)
-      timeZones[timeZone] = format(zonedTime, 'hh:mm:ss')
+      timeZones[timeZone] = {
+        time: format(zonedTime, 'hh:mm:ss'),
+        weatherImage
+      }
       return timeZones
     }, {})
   }

@@ -95,7 +95,7 @@ module.exports =
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst date_fns_tz_1 = __webpack_require__(/*! date-fns-tz */ \"date-fns-tz\");\nconst timeZones = (options) => {\n    const { time, timeZones } = options;\n    const date = new Date(time);\n    return {\n        time,\n        timeZones: timeZones.reduce((timeZones, timeZone) => {\n            const zonedTime = date_fns_tz_1.utcToZonedTime(date, timeZone);\n            timeZones[timeZone] = date_fns_tz_1.format(zonedTime, 'hh:mm:ss');\n            return timeZones;\n        }, {}),\n    };\n};\nexports.default = timeZones;\n\n\n//# sourceURL=webpack:///./src/lambdas/timeZones.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst date_fns_tz_1 = __webpack_require__(/*! date-fns-tz */ \"date-fns-tz\");\nconst timeZones = async (options, s3) => {\n    const { time, timeZones } = options;\n    console.log('timeZones', options);\n    const date = new Date(time);\n    const weatherImage = await s3.getSignedUrlPromise('getObject', {\n        Bucket: 'serverless-webpack-example',\n        Key: 'sun.png',\n    });\n    console.log('weatherImage:', weatherImage);\n    return {\n        time,\n        timeZones: timeZones.reduce((timeZones, timeZone) => {\n            const zonedTime = date_fns_tz_1.utcToZonedTime(date, timeZone);\n            timeZones[timeZone] = {\n                time: date_fns_tz_1.format(zonedTime, 'hh:mm:ss'),\n                weatherImage,\n            };\n            return timeZones;\n        }, {}),\n    };\n};\nexports.default = timeZones;\n\n\n//# sourceURL=webpack:///./src/lambdas/timeZones.ts?");
 
 /***/ }),
 
@@ -107,7 +107,18 @@ eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst timeZones_1 = __webpack_require__(/*! ./lambdas/timeZones */ \"./src/lambdas/timeZones.ts\");\n/**\n * Example post body\n * {\n *   \"time\": 2020-03-25Z16:01:36.386Z\",\n *   \"timeZones\": [\n *     \"America/Los_Angeles\",\n *     \"America/Denver\",\n *     \"America/Chicago\",\n *     \"America/New_York\"\n *   ]\n * }\n */\nexports.handler = async (event) => {\n    const data = JSON.parse(event.body);\n    const result = timeZones_1.default(data);\n    return {\n        statusCode: 200,\n        body: JSON.stringify(result, null, 2),\n    };\n};\n\n\n//# sourceURL=webpack:///./src/timeZones.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", { value: true });\nconst timeZones_1 = __webpack_require__(/*! ./lambdas/timeZones */ \"./src/lambdas/timeZones.ts\");\nconst aws_sdk_1 = __webpack_require__(/*! aws-sdk */ \"aws-sdk\");\nconst s3 = new aws_sdk_1.S3();\n/**\n * Example post body\n * {\n *   \"time\": \"2020-03-25Z16:01:36.386Z\",\n *   \"timeZones\": [\n *     \"America/Los_Angeles\",\n *     \"America/Denver\",\n *     \"America/Chicago\",\n *     \"America/New_York\"\n *   ]\n * }\n */\nexports.handler = async (event) => {\n    const data = JSON.parse(event.body);\n    const result = await timeZones_1.default(data, s3);\n    console.log('result:', result);\n    return {\n        statusCode: 200,\n        body: JSON.stringify(result, null, 2),\n    };\n};\n\n\n//# sourceURL=webpack:///./src/timeZones.ts?");
+
+/***/ }),
+
+/***/ "aws-sdk":
+/*!**************************!*\
+  !*** external "aws-sdk" ***!
+  \**************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"aws-sdk\");\n\n//# sourceURL=webpack:///external_%22aws-sdk%22?");
 
 /***/ }),
 
