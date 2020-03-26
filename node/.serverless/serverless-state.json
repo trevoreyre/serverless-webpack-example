@@ -158,10 +158,10 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/serverless-webpack-example/dev/1585230703910-2020-03-26T13:51:43.910Z/serverless-webpack-example.zip"
+                "S3Key": "serverless/serverless-webpack-example/dev/1585245628263-2020-03-26T18:00:28.263Z/serverless-webpack-example.zip"
               },
               "FunctionName": "serverless-webpack-example-dev-timezones",
-              "Handler": "src/timezones.handler",
+              "Handler": "src/timeZones.handler",
               "MemorySize": 1024,
               "Role": {
                 "Fn::GetAtt": [
@@ -177,14 +177,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "TimezonesLambdaVersion6pI7rE6lcqGxJRNBsMb8JmnIsG2R6ttTTcJ5fcvmFcE": {
+          "TimezonesLambdaVersionYbguMwIXmLdHiPCk6vPeObLlvvCYVLoazqcQiEr1KR0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "TimezonesLambdaFunction"
               },
-              "CodeSha256": "RMC1Y9eSEwfRVitNNUD4QVr00OfyaLESSSPVPXCoAMk="
+              "CodeSha256": "ATQor1UOFz4ACUm+kIb2XqxPjFfESk92uaQ6B6GN7Xw="
             }
           },
           "ApiGatewayRestApi": {
@@ -257,7 +257,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1585230615444": {
+          "ApiGatewayDeployment1585245608578": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -316,7 +316,7 @@
           "TimezonesLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "TimezonesLambdaVersion6pI7rE6lcqGxJRNBsMb8JmnIsG2R6ttTTcJ5fcvmFcE"
+              "Ref": "TimezonesLambdaVersionYbguMwIXmLdHiPCk6vPeObLlvvCYVLoazqcQiEr1KR0"
             }
           },
           "ServiceEndpoint": {
@@ -419,7 +419,7 @@
     "pluginsData": {},
     "functions": {
       "timezones": {
-        "handler": "src/timezones.handler",
+        "handler": "src/timeZones.handler",
         "events": [
           {
             "http": {
@@ -435,16 +435,16 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "TimezonesLambdaVersion6pI7rE6lcqGxJRNBsMb8JmnIsG2R6ttTTcJ5fcvmFcE"
+        "versionLogicalId": "TimezonesLambdaVersionYbguMwIXmLdHiPCk6vPeObLlvvCYVLoazqcQiEr1KR0"
       }
     },
     "serviceFilename": "serverless.yml",
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/home/node/helloworld/serverless-webpack-example/.serverless/serverless-webpack-example.zip"
+    "artifact": "/c/Users/trevor.eyre/src/helloworld/serverless-webpack-example/node/.serverless/serverless-webpack-example.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/serverless-webpack-example/dev/1585230703910-2020-03-26T13:51:43.910Z",
+    "artifactDirectoryName": "serverless/serverless-webpack-example/dev/1585245628263-2020-03-26T18:00:28.263Z",
     "artifact": "serverless-webpack-example.zip"
   }
 }
