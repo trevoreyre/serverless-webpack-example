@@ -1,6 +1,6 @@
 const { utcToZonedTime, format } = require('date-fns-tz')
 
-const timeZones = ({ time, timeZones }, s3) => {
+const timeZones = async ({ time, timeZones }, s3) => {
   const date = new Date(time)
   const weatherImage = await s3.getSignedUrlPromise('getObject', {
     Bucket: 'serverless-webpack-example',

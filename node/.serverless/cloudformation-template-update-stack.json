@@ -117,6 +117,13 @@
                       "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/serverless-webpack-example-dev*:*:*"
                     }
                   ]
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "s3:GetObject"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
@@ -144,7 +151,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/serverless-webpack-example/dev/1585245628263-2020-03-26T18:00:28.263Z/serverless-webpack-example.zip"
+          "S3Key": "serverless/serverless-webpack-example/dev/1585249299682-2020-03-26T19:01:39.682Z/serverless-webpack-example.zip"
         },
         "FunctionName": "serverless-webpack-example-dev-timezones",
         "Handler": "src/timeZones.handler",
@@ -163,14 +170,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "TimezonesLambdaVersionYbguMwIXmLdHiPCk6vPeObLlvvCYVLoazqcQiEr1KR0": {
+    "TimezonesLambdaVersionGSaWeR8DBlqOuo70LYOA4lEukam0AdVdFEkxqXVpA": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "TimezonesLambdaFunction"
         },
-        "CodeSha256": "ATQor1UOFz4ACUm+kIb2XqxPjFfESk92uaQ6B6GN7Xw="
+        "CodeSha256": "t7+X127uPhzLuynjTzRUmGOhOVQWP21cIG7uEeQCfxM="
       }
     },
     "ApiGatewayRestApi": {
@@ -243,7 +250,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1585245608578": {
+    "ApiGatewayDeployment1585249275621": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -302,7 +309,7 @@
     "TimezonesLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "TimezonesLambdaVersionYbguMwIXmLdHiPCk6vPeObLlvvCYVLoazqcQiEr1KR0"
+        "Ref": "TimezonesLambdaVersionGSaWeR8DBlqOuo70LYOA4lEukam0AdVdFEkxqXVpA"
       }
     },
     "ServiceEndpoint": {
