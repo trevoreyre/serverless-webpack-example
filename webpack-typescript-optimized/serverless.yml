@@ -1,0 +1,28 @@
+service: serverless-webpack-example
+
+plugins:
+  - serverless-offline
+  - serverless-webpack
+
+custom:
+  webpack:
+    includeModules:
+      forceExclude:
+        - aws-sdk
+    keepOutputDirectory: true
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  iamRoleStatements:
+    - Effect: Allow
+      Action: ['s3:GetObject']
+      Resource: '*'
+
+functions:
+  timezones:
+    handler: src/timeZones.handler
+    events:
+      - http:
+          path: timezones
+          method: post

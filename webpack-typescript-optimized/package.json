@@ -1,0 +1,35 @@
+{
+  "name": "serverless-webpack-example",
+  "version": "1.0.0",
+  "description": "Example using Webpack to optimize AWS Lambdas deployed with Serverless Framework",
+  "keywords": [
+    "serverless",
+    "aws",
+    "lambda",
+    "webpack"
+  ],
+  "author": "Trevor Eyre <trevoreyre@gmail.com> (https://trevoreyre.com)",
+  "license": "MIT",
+  "homepage": "https://github.com/trevoreyre/serverless-webpack-example#readme",
+  "repository": "trevoreyre/serverless-webpack-example",
+  "bugs": "https://github.com/trevoreyre/serverless-webpack-example/issues",
+  "scripts": {
+    "start": "serverless offline",
+    "package": "serverless package",
+    "webpack": "serverless webpack"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.646.0",
+    "date-fns": "^2.11.0",
+    "date-fns-tz": "^1.0.10"
+  },
+  "devDependencies": {
+    "serverless": "^1.67.0",
+    "serverless-offline": "^6.1.0",
+    "serverless-webpack": "^5.3.1",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-bundle-analyzer": "^3.6.1"
+  }
+}
