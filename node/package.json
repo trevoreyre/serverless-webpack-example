@@ -23,7 +23,7 @@
     "date-fns-tz": "^1.0.10"
   },
   "devDependencies": {
-    "serverless": "^1.67.0",
+    "serverless": "^3.25.1",
     "serverless-offline": "^6.1.0"
   }
 }
